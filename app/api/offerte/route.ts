@@ -5,19 +5,6 @@ export const runtime = "nodejs";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-type QuoteRequestBody = {
-  name?: unknown;
-  phone?: unknown;
-  email?: unknown;
-  customerType?: unknown;
-  company?: unknown;
-  address?: unknown;
-  postalCode?: unknown;
-  city?: unknown;
-  services?: unknown;
-  additionalInformation?: unknown;
-  privacyAccepted?: unknown;
-};
 
 function getString(value: unknown): string {
   return typeof value === "string" ? value.trim() : "";
@@ -41,16 +28,6 @@ function isValidPhone(phone: string): boolean {
   return /^\d{8,15}$/.test(normalizedPhone);
 }
 
-function getServices(value: unknown): string[] {
-  if (!Array.isArray(value)) {
-    return [];
-  }
-
-  return value
-    .filter((service): service is string => typeof service === "string")
-    .map((service) => service.trim())
-    .filter(Boolean);
-}
 
 export async function POST(request: Request) {
   try {
@@ -67,11 +44,13 @@ export async function POST(request: Request) {
       );
     }
 
-    let body: QuoteRequestBody;
+    let formData: FormData;
 
     try {
-      body = (await request.json()) as QuoteRequestBody;
-    } catch {
+      formData = await request.formData();
+    } catch (error) {
+      console.error("Fout bij request.formData():", error);
+
       return NextResponse.json(
         {
           success: false,
@@ -81,17 +60,82 @@ export async function POST(request: Request) {
       );
     }
 
-    const name = getString(body.name);
-    const phone = getString(body.phone);
-    const email = getString(body.email);
-    const customerType = getString(body.customerType);
-    const company = getString(body.company);
-    const address = getString(body.address);
-    const postalCode = getString(body.postalCode);
-    const city = getString(body.city);
-    const additionalInformation = getString(body.additionalInformation);
-    const services = getServices(body.services);
-    const privacyAccepted = body.privacyAccepted === true;
+    const name = getString(formData.get("name"));
+    const phone = getString(formData.get("phone"));
+    const email = getString(formData.get("email"));
+    const customerType = getString(formData.get("customerType"));
+    const company = getString(formData.get("company"));
+    const address = getString(formData.get("address"));
+    const postalCode = getString(formData.get("postalCode"));
+    const city = getString(formData.get("city"));
+    const additionalInformation = getString(
+      formData.get("additionalInformation"),
+    );
+    const services = formData
+      .getAll("services")
+      .filter((service): service is string => typeof service === "string")
+      .map((service) => service.trim())
+      .filter(Boolean);
+    const privacyAccepted = formData.get("privacyAccepted") === "true";
+
+    const photos = formData
+      .getAll("photos")
+      .filter(
+        (photo): photo is File =>
+          photo instanceof File && photo.size > 0,
+      );
+
+    if (photos.length > 3) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Je kunt maximaal 3 foto's uploaden.",
+        },
+        { status: 400 },
+      );
+    }
+
+    const allowedPhotoTypes = new Set([
+      "image/jpeg",
+      "image/png",
+      "image/webp",
+    ]);
+    const maximumPhotoSize = 5 * 1024 * 1024;
+
+    const attachments: Array<{
+      filename: string;
+      content: string;
+    }> = [];
+
+    for (const photo of photos) {
+      if (!allowedPhotoTypes.has(photo.type)) {
+        return NextResponse.json(
+          {
+            success: false,
+            message: "Alleen JPG, JPEG, PNG en WEBP-afbeeldingen zijn toegestaan.",
+          },
+          { status: 400 },
+        );
+      }
+
+      if (photo.size > maximumPhotoSize) {
+        return NextResponse.json(
+          {
+            success: false,
+            message: "Elke foto mag maximaal 5 MB groot zijn.",
+          },
+          { status: 400 },
+        );
+      }
+
+      const safeFilename =
+        photo.name.replace(/[^a-zA-Z0-9._-]/g, "_") || "foto";
+
+      attachments.push({
+        filename: safeFilename,
+        content: Buffer.from(await photo.arrayBuffer()).toString("base64"),
+      });
+    }
 
     if (
       !name ||
@@ -203,6 +247,7 @@ export async function POST(request: Request) {
       to: ["info@scs.care"],
       replyTo: email,
       subject: `Nieuwe offerteaanvraag van ${name}`,
+      attachments,
       html: `
         <!doctype html>
         <html lang="nl">

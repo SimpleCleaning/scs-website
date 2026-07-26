@@ -45,7 +45,7 @@ type ApiResponse = {
 
 export default function QuoteForm() {
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
-  const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [customerType, setCustomerType] = useState("Particulier");
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState<
@@ -81,11 +81,31 @@ export default function QuoteForm() {
       return;
     }
 
-    const imageFiles = Array.from(files).filter((file) =>
-      file.type.startsWith("image/"),
-    );
+    const imageFiles = Array.from(files);
 
-    setSelectedFiles(imageFiles.map((file) => file.name));
+    if (imageFiles.length > 3) {
+      setMessage("Je kunt maximaal 3 foto's uploaden.");
+      setMessageType("error");
+      return;
+    }
+
+    const allowed = ["image/jpeg","image/png","image/webp"];
+
+    for (const file of imageFiles) {
+      if (!allowed.includes(file.type)) {
+        setMessage("Alleen JPG, PNG en WEBP zijn toegestaan.");
+        setMessageType("error");
+        return;
+      }
+
+      if (file.size > 5 * 1024 * 1024) {
+        setMessage(`'${file.name}' is groter dan 5 MB.`);
+        setMessageType("error");
+        return;
+      }
+    }
+
+    setSelectedFiles(imageFiles);
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -128,12 +148,21 @@ export default function QuoteForm() {
     setIsSubmitting(true);
 
     try {
+      const uploadData = new FormData();
+
+      Object.entries(payload).forEach(([key, value]) => {
+        if (Array.isArray(value)) {
+          value.forEach((v) => uploadData.append(key, v));
+        } else {
+          uploadData.append(key, String(value));
+        }
+      });
+
+      selectedFiles.forEach((file) => uploadData.append("photos", file));
+
       const response = await fetch("/api/offerte", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
+        body: uploadData,
       });
 
       let result: ApiResponse = {};
@@ -572,8 +601,9 @@ export default function QuoteForm() {
               </h3>
 
               <p className="mt-2 text-sm leading-6 text-slate-600">
-                Foto’s zijn niet verplicht. De geselecteerde foto’s worden in
-                deze versie nog niet met de e-mail meegestuurd.
+                Foto’s zijn niet verplicht. De geselecteerde foto’s worden
+meegestuurd met je offerteaanvraag. Je kunt maximaal 3 foto’s
+toevoegen van maximaal 5 MB per foto.
               </p>
 
               <label
@@ -610,9 +640,9 @@ export default function QuoteForm() {
                   </p>
 
                   <ul className="mt-3 space-y-2">
-                    {selectedFiles.map((fileName, index) => (
+                    {selectedFiles.map((file, index) => (
                       <li
-                        key={`${fileName}-${index}`}
+                        key={`${file.name}-${index}`}
                         className="flex items-center gap-2 text-sm text-slate-600"
                       >
                         <Check
@@ -620,7 +650,7 @@ export default function QuoteForm() {
                           aria-hidden="true"
                         />
 
-                        <span className="break-all">{fileName}</span>
+                        <span className="break-all">{file.name}</span>
                       </li>
                     ))}
                   </ul>
