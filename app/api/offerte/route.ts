@@ -562,12 +562,223 @@ Ontvangen op ${submittedAt}.
       );
     }
 
+    const confirmationServicesHtml = services
+      .map(
+        (service) => `
+          <li style="margin-bottom: 8px;">
+            ${escapeHtml(service)}
+          </li>
+        `,
+      )
+      .join("");
+
+    const {
+      data: confirmationData,
+      error: confirmationError,
+    } = await resend.emails.send({
+      from: "Simple Cleaning Service <info@scs.care>",
+      to: [email],
+      replyTo: "info@scs.care",
+      subject: "Wij hebben je offerteaanvraag ontvangen",
+      html: `
+        <!doctype html>
+        <html lang="nl">
+          <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <title>Offerteaanvraag ontvangen</title>
+          </head>
+
+          <body
+            style="
+              margin: 0;
+              padding: 0;
+              background-color: #f1f5f9;
+              font-family: Arial, Helvetica, sans-serif;
+              color: #0f172a;
+            "
+          >
+            <div style="padding: 32px 16px;">
+              <div
+                style="
+                  max-width: 680px;
+                  margin: 0 auto;
+                  overflow: hidden;
+                  border: 1px solid #e2e8f0;
+                  border-radius: 20px;
+                  background-color: #ffffff;
+                "
+              >
+                <div
+                  style="
+                    padding: 30px;
+                    background-color: #0284c7;
+                    color: #ffffff;
+                  "
+                >
+                  <p
+                    style="
+                      margin: 0 0 8px;
+                      font-size: 13px;
+                      font-weight: 700;
+                      letter-spacing: 1.5px;
+                      text-transform: uppercase;
+                    "
+                  >
+                    Simple Cleaning Service
+                  </p>
+
+                  <h1
+                    style="
+                      margin: 0;
+                      font-size: 28px;
+                      line-height: 1.25;
+                    "
+                  >
+                    Bedankt voor je aanvraag
+                  </h1>
+
+                  <p
+                    style="
+                      margin: 12px 0 0;
+                      color: #e0f2fe;
+                      line-height: 1.6;
+                    "
+                  >
+                    We hebben je offerteaanvraag goed ontvangen.
+                  </p>
+                </div>
+
+                <div style="padding: 30px;">
+                  <p style="margin: 0; line-height: 1.7;">
+                    Beste ${safeName},
+                  </p>
+
+                  <p style="margin: 18px 0 0; line-height: 1.7;">
+                    Bedankt voor je offerteaanvraag bij Simple Cleaning
+                    Service. We bekijken je aanvraag en nemen zo snel mogelijk
+                    persoonlijk contact met je op.
+                  </p>
+
+                  <h2
+                    style="
+                      margin: 32px 0 14px;
+                      font-size: 20px;
+                      color: #0f172a;
+                    "
+                  >
+                    Jouw geselecteerde werkzaamheden
+                  </h2>
+
+                  <div
+                    style="
+                      padding: 18px 20px;
+                      border-radius: 14px;
+                      background-color: #f0f9ff;
+                      color: #0f172a;
+                    "
+                  >
+                    <ul style="margin: 0; padding-left: 20px;">
+                      ${confirmationServicesHtml}
+                    </ul>
+                  </div>
+
+                  <div
+                    style="
+                      margin-top: 30px;
+                      padding: 20px;
+                      border-radius: 14px;
+                      background-color: #0f172a;
+                      color: #ffffff;
+                    "
+                  >
+                    <p style="margin: 0 0 10px; font-weight: 700;">
+                      Heb je in de tussentijd een vraag?
+                    </p>
+
+                    <p
+                      style="
+                        margin: 0;
+                        color: #cbd5e1;
+                        line-height: 1.8;
+                      "
+                    >
+                      Telefoon:
+                      <a
+                        href="tel:+31619909034"
+                        style="color: #7dd3fc; text-decoration: none;"
+                      >
+                        06 19909034
+                      </a>
+                      <br />
+                      E-mail:
+                      <a
+                        href="mailto:info@scs.care"
+                        style="color: #7dd3fc; text-decoration: none;"
+                      >
+                        info@scs.care
+                      </a>
+                    </p>
+                  </div>
+
+                  <p style="margin: 28px 0 0; line-height: 1.7;">
+                    Met vriendelijke groet,<br />
+                    <strong>Simple Cleaning Service</strong>
+                  </p>
+
+                  <p
+                    style="
+                      margin: 26px 0 0;
+                      color: #64748b;
+                      font-size: 12px;
+                      line-height: 1.6;
+                    "
+                  >
+                    Deze bevestiging is automatisch verstuurd naar
+                    ${safeEmail}.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </body>
+        </html>
+      `,
+      text: `
+Beste ${name},
+
+Bedankt voor je offerteaanvraag bij Simple Cleaning Service.
+
+We hebben je aanvraag goed ontvangen en nemen zo snel mogelijk persoonlijk contact met je op.
+
+JOUW GESELECTEERDE WERKZAAMHEDEN
+${services.map((service) => `- ${service}`).join("\n")}
+
+Heb je in de tussentijd een vraag?
+
+Telefoon: 06 19909034
+E-mail: info@scs.care
+
+Met vriendelijke groet,
+
+Simple Cleaning Service
+      `.trim(),
+    });
+
+    if (confirmationError) {
+      console.error(
+        "Bevestigingsmail naar klant kon niet worden verstuurd:",
+        confirmationError,
+      );
+    }
+
     return NextResponse.json(
       {
         success: true,
         message:
           "Bedankt! Je offerteaanvraag is succesvol verstuurd. We nemen zo snel mogelijk contact met je op.",
         emailId: data?.id,
+        confirmationEmailId: confirmationData?.id ?? null,
+        confirmationEmailSent: !confirmationError,
       },
       { status: 200 },
     );
