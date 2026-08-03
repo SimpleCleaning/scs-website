@@ -1,78 +1,98 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+
+const menuItems = [
+  { label: "Home", href: "/", path: "/" },
+  { label: "Diensten", href: "/diensten", path: "/diensten" },
+  { label: "Over ons", href: "/over-ons", path: "/over-ons" },
+  { label: "Werkwijze", href: "/#werkwijze", path: "#werkwijze" },
+  { label: "Offerte", href: "/offerte", path: "/offerte" },
+  { label: "Contact", href: "/contact", path: "/contact" },
+];
 
 export default function Header() {
+  const pathname = usePathname();
+  const [hash, setHash] = useState("");
+
+  useEffect(() => {
+    function updateHash() {
+      setHash(window.location.hash);
+    }
+
+    updateHash();
+
+    window.addEventListener("hashchange", updateHash);
+
+    return () => {
+      window.removeEventListener("hashchange", updateHash);
+    };
+  }, [pathname]);
+
+  function isActive(path: string) {
+    if (path === "#werkwijze") {
+      return pathname === "/" && hash === "#werkwijze";
+    }
+
+    if (path === "/") {
+      return pathname === "/" && hash !== "#werkwijze";
+    }
+
+    return pathname === path;
+  }
+
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 shadow-sm backdrop-blur">
       <div className="mx-auto flex min-h-36 max-w-7xl items-center gap-8 px-4 py-3 sm:px-6">
-        <a
-          href="#home"
+        <Link
+          href="/"
           aria-label="Ga naar de homepage"
           className="flex shrink-0 items-center"
         >
           <Image
             src="/logo.png"
             alt="Logo van Simple Cleaning Service"
-            width={320}
-            height={320}
+            width={360}
+            height={360}
             priority
-            className="h-32 w-32 object-contain sm:h-36 sm:w-36 lg:h-44 lg:w-44"
+            className="h-36 w-36 object-contain sm:h-40 sm:w-40 lg:h-52 lg:w-52"
           />
-        </a>
+        </Link>
 
-        <div className="ml-auto flex items-center gap-8">
+        <div className="ml-auto flex items-center gap-6">
           <nav
             aria-label="Hoofdnavigatie"
-            className="hidden items-center gap-7 lg:flex"
+            className="hidden items-center gap-2 lg:flex"
           >
-            <a
-              href="#home"
-              className="font-semibold text-blue-700 transition hover:text-blue-900"
-            >
-              Home
-            </a>
+            {menuItems.map((item) => {
+              const active = isActive(item.path);
 
-            <a
-              href="#diensten"
-              className="font-medium text-slate-700 transition hover:text-blue-700"
-            >
-              Diensten
-            </a>
-
-            <a
-              href="#waarom"
-              className="font-medium text-slate-700 transition hover:text-blue-700"
-            >
-              Over ons
-            </a>
-
-            <a
-              href="#werkwijze"
-              className="font-medium text-slate-700 transition hover:text-blue-700"
-            >
-              Werkwijze
-            </a>
-
-            <a
-              href="#offerte"
-              className="font-medium text-slate-700 transition hover:text-blue-700"
-            >
-              Offerte
-            </a>
-
-            <a
-              href="#contact"
-              className="font-medium text-slate-700 transition hover:text-blue-700"
-            >
-              Contact
-            </a>
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  aria-current={active ? "page" : undefined}
+                  className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition ${
+                    active
+                      ? "bg-sky-100 text-sky-700"
+                      : "text-slate-700 hover:bg-slate-100 hover:text-sky-700"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </nav>
 
-          <a
-            href="#offerte"
+          <Link
+            href="/offerte"
             className="shrink-0 whitespace-nowrap rounded-2xl bg-blue-600 px-5 py-4 text-sm font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-lg sm:px-7"
           >
             Gratis offerte
-          </a>
+          </Link>
         </div>
       </div>
     </header>
