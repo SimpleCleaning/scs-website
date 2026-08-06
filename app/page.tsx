@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import Pricing from "../components/home/Pricing";
 
 export const metadata: Metadata = {
   title: "Simple Cleaning Service | Glasbewassing en buitenreiniging",
@@ -340,6 +341,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Tarieven */}
+      <Pricing />
 
       {/* Kernwaarden */}
       <section className="bg-white py-20 sm:py-24">

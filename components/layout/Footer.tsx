@@ -12,8 +12,9 @@ export default function Footer() {
           </Link>
 
           <p className="mt-5 max-w-sm leading-7 text-slate-400">
-  Specialist in glasbewassing en het reinigen van zonnepanelen, dakgoten en boeidelen.
-</p>
+            Specialist in glasbewassing en het reinigen van zonnepanelen,
+            dakgoten en boeidelen.
+          </p>
 
           <p className="mt-4 text-sm font-semibold text-sky-400">
             Helder, fris en streeploos!
@@ -22,37 +23,19 @@ export default function Footer() {
 
         <div>
           <h2 className="font-black text-white">Navigatie</h2>
-
           <nav className="mt-5 flex flex-col gap-3 text-sm">
             <Link href="/" className="transition hover:text-sky-400">
               Home
             </Link>
-
-            <Link
-              href="/diensten"
-              className="transition hover:text-sky-400"
-            >
+            <Link href="/diensten" className="transition hover:text-sky-400">
               Diensten
             </Link>
-
-            <Link
-              href="/over-ons"
-              className="transition hover:text-sky-400"
-            >
-              Over ons
+            <Link href="/#tarieven" className="transition hover:text-sky-400">
+              Tarieven
             </Link>
-
-            <Link
-              href="/#werkwijze"
-              className="transition hover:text-sky-400"
-            >
-              Werkwijze
-            </Link>
-
             <Link href="/offerte" className="transition hover:text-sky-400">
               Offerte
             </Link>
-
             <Link href="/contact" className="transition hover:text-sky-400">
               Contact
             </Link>
@@ -61,7 +44,6 @@ export default function Footer() {
 
         <div>
           <h2 className="font-black text-white">Contact</h2>
-
           <div className="mt-5 flex flex-col gap-3 text-sm">
             <a
               href="tel:+31619909034"
@@ -69,22 +51,34 @@ export default function Footer() {
             >
               +31 6 19909034
             </a>
-
             <a
               href="mailto:info@scs.care"
               className="transition hover:text-sky-400"
             >
               info@scs.care
             </a>
-
             <p>Borne, Overijssel</p>
           </div>
         </div>
 
         <div>
-          <h2 className="font-black text-white">Bedrijfsgegevens</h2>
+          <h2 className="font-black text-white">Juridisch</h2>
+          <nav className="mt-5 flex flex-col gap-3 text-sm">
+            <Link
+              href="/algemene-voorwaarden"
+              className="transition hover:text-sky-400"
+            >
+              Algemene voorwaarden
+            </Link>
+            <Link href="/privacy" className="transition hover:text-sky-400">
+              Privacyverklaring
+            </Link>
+            <Link href="/cookies" className="transition hover:text-sky-400">
+              Cookieverklaring
+            </Link>
+          </nav>
 
-          <div className="mt-5 space-y-3 text-sm">
+          <div className="mt-7 space-y-2 text-sm text-slate-400">
             <p>KvK: 82784329</p>
             <p>BTW: NL003731152B38</p>
           </div>
@@ -92,24 +86,11 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between lg:px-8">
+        <div className="mx-auto max-w-7xl px-6 py-6 text-sm text-slate-500 lg:px-8">
           <p>
             © {new Date().getFullYear()} Simple Cleaning Service. Alle rechten
             voorbehouden.
           </p>
-
-          <div className="flex flex-wrap gap-5">
-            <Link href="/privacy" className="transition hover:text-white">
-              Privacy
-            </Link>
-
-            <Link
-              href="/algemene-voorwaarden"
-              className="transition hover:text-white"
-            >
-              Algemene voorwaarden
-            </Link>
-          </div>
         </div>
       </div>
     </footer>
