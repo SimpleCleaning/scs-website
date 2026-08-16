@@ -70,6 +70,61 @@ export const metadata: Metadata = {
   },
 };
 
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.scs.care/#business",
+  name: "Simple Cleaning Service",
+  url: "https://www.scs.care",
+  telephone: "+31619909034",
+  email: "info@scs.care",
+  description:
+    "Glazenwasser en buitenreinigingsbedrijf uit Borne voor glasbewassing en het reinigen van zonnepanelen, dakgoten en boeidelen.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Borne",
+    addressRegion: "Overijssel",
+    addressCountry: "NL",
+  },
+  areaServed: [
+    {
+      "@type": "City",
+      name: "Borne",
+    },
+    {
+      "@type": "City",
+      name: "Hengelo",
+    },
+    {
+      "@type": "City",
+      name: "Almelo",
+    },
+    {
+      "@type": "City",
+      name: "Enschede",
+    },
+    {
+      "@type": "City",
+      name: "Delden",
+    },
+    {
+      "@type": "City",
+      name: "Goor",
+    },
+    {
+      "@type": "City",
+      name: "Tubbergen",
+    },
+  ],
+  knowsAbout: [
+    "Glasbewassing",
+    "Glazen wassen",
+    "Zonnepanelen reinigen",
+    "Dakgoten schoonmaken",
+    "Boeidelen reinigen",
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -81,6 +136,13 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-screen flex-col bg-white text-slate-900">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+
         <Header />
 
         <main className="flex-1">{children}</main>

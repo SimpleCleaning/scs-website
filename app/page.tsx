@@ -4,9 +4,9 @@ import Link from "next/link";
 import Pricing from "../components/home/Pricing";
 
 export const metadata: Metadata = {
-  title: "Simple Cleaning Service | Glasbewassing en buitenreiniging",
+  title: "Glazenwasser Borne | Simple Cleaning Service",
   description:
-    "Simple Cleaning Service uit Borne voor glasbewassing en het reinigen van zonnepanelen, dakgoten en boeidelen.",
+    "Glazenwasser in Borne nodig? Simple Cleaning Service verzorgt professionele glasbewassing en reiniging van zonnepanelen, dakgoten en boeidelen in Borne en omgeving.",
   alternates: {
     canonical: "/",
   },
@@ -165,16 +165,16 @@ export default function HomePage() {
               Persoonlijk en professioneel
             </div>
 
-            <h1 className="max-w-3xl break-words text-3xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-              Schoonmaakservice met{" "}
-              <span className="text-sky-400">aandacht voor kwaliteit</span>
-            </h1>
+         <h1 className="max-w-3xl break-words text-3xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+  Glazenwasser in Borne voor een{" "}
+  <span className="text-sky-400">helder resultaat</span>
+</h1>
 
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-              Simple Cleaning Service is gevestigd in Borne en helpt
-              particulieren en bedrijven met professionele reiniging van ramen,
-              zonnepanelen, dakgoten en boeidelen.
-            </p>
+<p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
+  Professionele glasbewassing en buitenreiniging in Borne en omgeving.
+  Voor schone ramen, zonnepanelen, dakgoten en boeidelen, met duidelijke
+  afspraken en persoonlijke service.
+</p>
 
             <div className="mt-9 flex flex-col gap-4 sm:flex-row">
               <Link
@@ -456,11 +456,12 @@ export default function HomePage() {
               Actief in Borne en omgeving
             </h2>
 
-            <p className="mt-5 max-w-xl leading-8 text-slate-600">
-              Simple Cleaning Service is gevestigd in Borne en werkt
-              voornamelijk in Twente. Staat jouw woonplaats er niet tussen?
-              Neem dan gerust contact op om de mogelijkheden te bespreken.
-            </p>
+          <p className="mt-5 max-w-xl leading-8 text-slate-600">
+  Simple Cleaning Service is gevestigd in Borne en is actief in Borne,
+  Hengelo, Almelo, Enschede, Delden, Goor, Tubbergen en omliggende
+  plaatsen in Twente. Staat jouw woonplaats er niet tussen? Neem dan
+  gerust contact op om de mogelijkheden te bespreken.
+</p>
 
             <a
               href="tel:+31619909034"
