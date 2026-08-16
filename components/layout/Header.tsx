@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const menuItems = [
   { label: "Home", href: "/" },
@@ -16,8 +16,31 @@ const menuItems = [
 export default function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [hash, setHash] = useState("");
+
+  useEffect(() => {
+    function updateHash() {
+      setHash(window.location.hash);
+    }
+
+    updateHash();
+
+    window.addEventListener("hashchange", updateHash);
+
+    return () => {
+      window.removeEventListener("hashchange", updateHash);
+    };
+  }, [pathname]);
 
   function isActive(href: string) {
+    if (href === "/#tarieven") {
+      return pathname === "/" && hash === "#tarieven";
+    }
+
+    if (href === "/") {
+      return pathname === "/" && hash !== "#tarieven";
+    }
+
     return pathname === href;
   }
 
@@ -25,14 +48,27 @@ export default function Header() {
     setMenuOpen(false);
   }
 
+  function handleMenuClick(href: string) {
+    closeMenu();
+
+    if (href === "/#tarieven") {
+      setHash("#tarieven");
+    } else if (href === "/") {
+      setHash("");
+    }
+  }
+
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 shadow-sm backdrop-blur">
-      <div className="mx-auto flex min-h-32 max-w-7xl items-center gap-4 px-4 py-3 sm:px-6">
+      <div className="mx-auto flex min-h-28 max-w-7xl items-center gap-4 px-4 py-2 sm:px-6">
         <Link
           href="/"
           aria-label="Ga naar de homepage"
           className="flex shrink-0 items-center"
-          onClick={closeMenu}
+          onClick={() => {
+            closeMenu();
+            setHash("");
+          }}
         >
           <Image
             src="/logo.png"
@@ -40,7 +76,7 @@ export default function Header() {
             width={360}
             height={360}
             priority
-            className="h-28 w-28 object-contain sm:h-36 sm:w-36 lg:h-52 lg:w-52"
+            className="h-24 w-24 object-contain sm:h-28 sm:w-28 lg:h-40 lg:w-40"
           />
         </Link>
 
@@ -56,6 +92,7 @@ export default function Header() {
                 <Link
                   key={item.label}
                   href={item.href}
+                  onClick={() => handleMenuClick(item.href)}
                   aria-current={active ? "page" : undefined}
                   className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition ${
                     active
@@ -128,7 +165,7 @@ export default function Header() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  onClick={closeMenu}
+                  onClick={() => handleMenuClick(item.href)}
                   aria-current={active ? "page" : undefined}
                   className={`rounded-xl px-4 py-3 font-semibold transition ${
                     active

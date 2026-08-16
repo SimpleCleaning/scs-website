@@ -155,7 +155,7 @@ export default function HomePage() {
         <div className="absolute -right-24 top-10 h-72 w-72 rounded-full border border-white/10" />
         <div className="absolute -right-10 top-28 h-44 w-44 rounded-full border border-white/10" />
 
-        <div className="relative mx-auto grid max-w-7xl gap-14 px-6 py-20 sm:py-24 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:px-8 lg:py-28">
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-6 py-14 sm:py-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:px-8 lg:py-20">
           <div>
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-400/10 px-4 py-2 text-sm font-bold text-sky-200">
               <span className="h-2 w-2 rounded-full bg-sky-400" />
