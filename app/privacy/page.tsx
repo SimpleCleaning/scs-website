@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Privacyverklaring | Simple Cleaning Service",
   description:
     "Lees hoe Simple Cleaning Service persoonsgegevens verzamelt, gebruikt en beschermt.",
+  alternates: {
+    canonical: "/privacy",
+  },
 };
 
 const legalLinks = [

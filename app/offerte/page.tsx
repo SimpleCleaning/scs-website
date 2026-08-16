@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "Offerte aanvragen | Simple Cleaning Service",
   description:
     "Vraag vrijblijvend een offerte aan bij Simple Cleaning Service voor glazen wassen, zonnepanelen reinigen, dakgoten schoonmaken en boeidelen reinigen.",
+  alternates: {
+    canonical: "/offerte",
+  },
 };
 
 export default function OffertePage() {

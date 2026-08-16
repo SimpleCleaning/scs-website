@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://scs.care/sitemap.xml",
+    sitemap: "https://www.scs.care/sitemap.xml",
   };
 }

@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "Simple Cleaning Service | Glasbewassing en buitenreiniging",
   description:
     "Simple Cleaning Service uit Borne voor glasbewassing en het reinigen van zonnepanelen, dakgoten en boeidelen.",
+  alternates: {
+    canonical: "/",
+  },
 };
 
 const values = [

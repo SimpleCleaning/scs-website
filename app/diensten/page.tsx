@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Diensten | Simple Cleaning Service",
   description:
     "Professionele glasbewassing, zonnepanelenreiniging, dakgootreiniging en reiniging van boeidelen in Borne en omgeving.",
+  alternates: {
+    canonical: "/diensten",
+  },
 };
 
 type IconName = "window" | "solar" | "gutter" | "fascia";

@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: "Algemene voorwaarden | Simple Cleaning Service",
   description:
     "Lees de algemene voorwaarden van Simple Cleaning Service voor glasbewassing en buitenreiniging.",
+  alternates: {
+    canonical: "/algemene-voorwaarden",
+  },
 };
 
 const articles = [

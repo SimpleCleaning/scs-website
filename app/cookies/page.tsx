@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Cookieverklaring | Simple Cleaning Service",
   description:
     "Lees welke cookies en vergelijkbare technieken Simple Cleaning Service gebruikt.",
+  alternates: {
+    canonical: "/cookies",
+  },
 };
 
 const legalLinks = [

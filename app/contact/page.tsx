@@ -5,8 +5,10 @@ export const metadata: Metadata = {
   title: "Contact | Simple Cleaning Service",
   description:
     "Neem contact op met Simple Cleaning Service uit Borne voor glasbewassing, zonnepanelenreiniging, dakgootreiniging en het reinigen van boeidelen.",
+  alternates: {
+    canonical: "/contact",
+  },
 };
-
 const contactDetails = [
   {
     title: "Telefoon",
