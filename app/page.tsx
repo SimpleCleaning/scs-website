@@ -162,7 +162,7 @@ export default function HomePage() {
               Persoonlijk en professioneel
             </div>
 
-            <h1 className="max-w-3xl text-4xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+            <h1 className="max-w-3xl break-words text-3xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl">
               Schoonmaakservice met{" "}
               <span className="text-sky-400">aandacht voor kwaliteit</span>
             </h1>
