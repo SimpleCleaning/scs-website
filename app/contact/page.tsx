@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Contact | Simple Cleaning Service",
+  title: "Contact glazenwasser Borne",
   description:
-    "Neem contact op met Simple Cleaning Service uit Borne voor glasbewassing, zonnepanelenreiniging, dakgootreiniging en het reinigen van boeidelen.",
+    "Neem contact op met Simple Cleaning Service in Borne voor glasbewassing en buitenreiniging. Bel, mail of vraag vrijblijvend een offerte aan.",
   alternates: {
     canonical: "/contact",
   },
@@ -162,16 +162,16 @@ export default function ContactPage() {
             </div>
 
             <h1 className="max-w-3xl text-4xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-              Neem contact op met{" "}
+              Contact met jouw{" "}
               <span className="text-sky-400">
-                Simple Cleaning Service
+                glazenwasser in Borne
               </span>
             </h1>
 
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-              Heb je een vraag, wil je werkzaamheden combineren of een
-              afspraak laten inplannen? Bel, mail of stuur ons een bericht via
-              het contactformulier.
+              Heb je een vraag over glasbewassing, zonnepanelen, dakgoten of
+              boeidelen? Neem contact op met Simple Cleaning Service in Borne.
+              We helpen particulieren en bedrijven in Borne en Twente.
             </p>
 
             <div className="mt-9 flex flex-col gap-4 sm:flex-row">
@@ -474,9 +474,10 @@ export default function ContactPage() {
               </h2>
 
               <p className="mt-5 max-w-xl leading-8 text-slate-300">
-                We voeren werkzaamheden uit in Borne en verschillende
-                omliggende plaatsen in Twente. Neem contact op om te bespreken
-                of we ook op jouw adres kunnen langskomen.
+                Vanuit Borne zijn we actief in onder andere Hengelo, Almelo,
+                Enschede, Delden, Goor, Tubbergen en omliggende plaatsen in
+                Twente. Staat jouw woonplaats er niet tussen? Neem gerust
+                contact op om de mogelijkheden te bespreken.
               </p>
 
               <a
@@ -614,4 +615,4 @@ export default function ContactPage() {
 
     </main>
   );
-}
+} 
