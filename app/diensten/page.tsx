@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Diensten | Simple Cleaning Service",
+  title: "Glazenwasser Borne & buitenreiniging",
   description:
-    "Professionele glasbewassing, zonnepanelenreiniging, dakgootreiniging en reiniging van boeidelen in Borne en omgeving.",
+    "Professionele glasbewassing en buitenreiniging in Borne en Twente. Voor ramen, zonnepanelen, dakgoten en boeidelen bij woningen en bedrijfspanden.",
   alternates: {
     canonical: "/diensten",
   },
@@ -25,7 +25,7 @@ const services: Service[] = [
     number: "01",
     title: "Glazen wassen",
     description:
-      "Schone ramen zorgen direct voor een verzorgde uitstraling en meer licht in huis. Wij reinigen ramen zorgvuldig en streeploos, voor zowel particulieren als bedrijven.",
+      "Schone ramen zorgen voor meer licht en een verzorgde uitstraling. Simple Cleaning Service verzorgt glasbewassing in Borne en omgeving voor woningen en kleinere bedrijfspanden, eenmalig of periodiek.",
     benefits: [
       "Streeploos en professioneel resultaat",
       "Geschikt voor woningen en bedrijfspanden",
@@ -37,7 +37,7 @@ const services: Service[] = [
     number: "02",
     title: "Zonnepanelen reinigen",
     description:
-      "Vuil, stof, vogelpoep en aanslag kunnen zich op zonnepanelen ophopen. Met een zorgvuldige reiniging zorgen we ervoor dat jouw installatie weer schoon en verzorgd is.",
+      "Vuil, stof, vogelpoep en aanslag kunnen zich op zonnepanelen ophopen. Wij reinigen zonnepanelen zorgvuldig en zonder agressieve middelen, zodat de installatie weer schoon en verzorgd is.",
     benefits: [
       "Veilige en zorgvuldige werkwijze",
       "Reiniging zonder agressieve middelen",
@@ -49,7 +49,7 @@ const services: Service[] = [
     number: "03",
     title: "Dakgoten schoonmaken",
     description:
-      "Een verstopte dakgoot kan leiden tot overstromingen, lekkages en schade aan de gevel. Wij verwijderen bladeren, mos en ander vuil zodat regenwater weer goed kan wegstromen.",
+      "Bladeren, mos en ander vuil kunnen dakgoten laten verstoppen en zo overlast of lekkage veroorzaken. Wij maken dakgoten schoon en zorgen dat regenwater weer goed kan wegstromen.",
     benefits: [
       "Voorkomt verstoppingen en lekkages",
       "Verwijdering van bladeren en aanslag",
@@ -61,7 +61,7 @@ const services: Service[] = [
     number: "04",
     title: "Boeidelen reinigen",
     description:
-      "Boeidelen krijgen door het weer vaak te maken met groene aanslag, vuil en verkleuring. Wij reinigen ze grondig zodat de buitenzijde van jouw woning er weer fris uitziet.",
+      "Boeidelen krijgen door weer en wind te maken met groene aanslag, vuil en verkleuring. Met een zorgvuldige reiniging krijgt de buitenzijde van jouw woning of pand weer een nette, frisse uitstraling.",
     benefits: [
       "Verwijdert vuil en groene aanslag",
       "Verzorgde uitstraling van de woning",
@@ -90,7 +90,7 @@ const advantages = [
   {
     title: "Actief in de regio",
     description:
-      "Simple Cleaning Service is gevestigd in Borne en werkt in Borne en omliggende plaatsen.",
+      "Simple Cleaning Service is gevestigd in Borne en werkt onder andere in Borne, Hengelo, Almelo, Enschede, Delden, Goor en Tubbergen.",
   },
 ];
 
@@ -113,7 +113,7 @@ const faqs = [
   {
     question: "In welke plaatsen zijn jullie actief?",
     answer:
-      "We zijn gevestigd in Borne en werken voornamelijk in Borne en de omliggende regio. Neem gerust contact op om te controleren of jouw adres binnen het werkgebied valt.",
+      "We zijn gevestigd in Borne en werken onder andere in Borne, Hengelo, Almelo, Enschede, Delden, Goor, Tubbergen en omliggende plaatsen in Twente. Neem gerust contact op als jouw woonplaats er niet tussen staat.",
   },
 ];
 
@@ -238,14 +238,14 @@ export default function DienstenPage() {
             </div>
 
             <h1 className="max-w-3xl text-4xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-              Professionele reiniging voor een{" "}
-              <span className="text-sky-400">verzorgde uitstraling</span>
+              Glasbewassing en buitenreiniging in{" "}
+              <span className="text-sky-400">Borne en omgeving</span>
             </h1>
 
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-              Van streeploze ramen tot schone zonnepanelen, dakgoten en
-              boeidelen. Simple Cleaning Service helpt jouw woning of pand
-              netjes en verzorgd te houden.
+              Simple Cleaning Service helpt particulieren en bedrijven in Borne
+              en Twente met professionele glasbewassing en het reinigen van
+              zonnepanelen, dakgoten en boeidelen.
             </p>
 
             <div className="mt-9 flex flex-col gap-4 sm:flex-row">
@@ -309,17 +309,17 @@ export default function DienstenPage() {
             </p>
 
             <h2 className="mt-4 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">
-              Reiniging met aandacht voor ieder detail
+              Professionele reiniging voor woning en bedrijfspand
             </h2>
           </div>
 
           <div>
             <p className="text-lg leading-8 text-slate-600">
               Buitenoppervlakken krijgen dagelijks te maken met regen, stof,
-              bladeren, uitlaatgassen en groene aanslag. Regelmatige reiniging
-              helpt om jouw woning of bedrijfspand fris en verzorgd te houden.
-              Wij werken zorgvuldig, maken duidelijke afspraken en leveren
-              werkzaamheden waar je op kunt vertrouwen.
+              bladeren en groene aanslag. Met regelmatige glasbewassing en
+              buitenreiniging blijft jouw woning of bedrijfspand fris en
+              verzorgd. Vanuit Borne werken we met duidelijke afspraken,
+              persoonlijke service en aandacht voor een nette uitvoering.
             </p>
           </div>
         </div>
@@ -334,12 +334,13 @@ export default function DienstenPage() {
             </p>
 
             <h2 className="mt-4 text-3xl font-black tracking-tight text-slate-950 sm:text-5xl">
-              Onze schoonmaakdiensten
+              Onze diensten in Borne en Twente
             </h2>
 
             <p className="mt-5 text-lg leading-8 text-slate-600">
-              Kies één losse dienst of combineer meerdere werkzaamheden in één
-              afspraak.
+              Kies voor glasbewassing, zonnepanelen reinigen, dakgoten
+              schoonmaken of boeidelen reinigen. Meerdere werkzaamheden zijn
+              eenvoudig te combineren in één afspraak.
             </p>
           </div>
 
