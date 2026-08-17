@@ -20,8 +20,8 @@ const benefits = [
   },
   {
     title: "Professioneel resultaat",
-    description:
-      "Wij werken zorgvuldig, veilig en met aandacht voor een schoon eindresultaat.",
+  description:
+  "Wij voeren glasbewassing en buitenreiniging zorgvuldig uit, met aandacht voor jouw woning, pand en omgeving.",
     icon: Sparkles,
   },
 ];
@@ -36,14 +36,14 @@ export default function Benefits() {
             Waarom Simple Cleaning Service?
           </div>
 
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            Schoon, betrouwbaar en zonder gedoe
-          </h2>
+         <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+  Persoonlijke service en duidelijke afspraken
+</h2>
 
-          <p className="mt-4 text-base leading-7 text-slate-600 sm:text-lg">
-            Persoonlijke service voor woningen en bedrijven in Borne en
-            omgeving.
-          </p>
+<p className="mt-4 text-base leading-7 text-slate-600 sm:text-lg">
+  Vraag vrijblijvend een offerte aan voor glasbewassing en
+  buitenreiniging bij woningen en bedrijven in Borne en Twente.
+</p>
         </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">

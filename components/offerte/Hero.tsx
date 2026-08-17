@@ -9,16 +9,17 @@ export default function Hero() {
             Vrijblijvende offerte
           </div>
 
-          <h1 className="text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">
-            Vraag direct een{" "}
-            <span className="text-sky-400">offerte</span> aan
-          </h1>
+        <h1 className="text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">
+  Vraag een offerte aan voor{" "}
+  <span className="text-sky-400">glasbewassing in Borne</span>
+</h1>
 
-          <p className="mt-6 text-lg leading-8 text-slate-300">
-            Vul hieronder je gegevens in en geef aan welke werkzaamheden je
-            wilt laten uitvoeren. Wij nemen zo snel mogelijk contact met je op
-            met een vrijblijvende prijsopgave.
-          </p>
+<p className="mt-6 text-lg leading-8 text-slate-300">
+  Vraag vrijblijvend een prijsopgave aan voor glasbewassing en
+  buitenreiniging in Borne en Twente. Geef aan of het gaat om ramen,
+  zonnepanelen, dakgoten of boeidelen en wij nemen zo snel mogelijk
+  contact met je op.
+</p>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2">
             <div className="rounded-2xl bg-white/10 p-5 backdrop-blur">

@@ -5,9 +5,9 @@ import Benefits from "../../components/offerte/Benefits";
 import CTA from "../../components/offerte/CTA";
 
 export const metadata: Metadata = {
-  title: "Offerte aanvragen | Simple Cleaning Service",
+  title: "Offerte glazenwasser Borne",
   description:
-    "Vraag vrijblijvend een offerte aan bij Simple Cleaning Service voor glazen wassen, zonnepanelen reinigen, dakgoten schoonmaken en boeidelen reinigen.",
+    "Vraag vrijblijvend een offerte aan voor glasbewassing en buitenreiniging in Borne en Twente. Voor ramen, zonnepanelen, dakgoten en boeidelen.",
   alternates: {
     canonical: "/offerte",
   },
