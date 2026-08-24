@@ -4,17 +4,17 @@ import Link from "next/link";
 const prices = [
   {
     title: "Tussenwoning",
-    price: "€35",
+    price: "€45",
     image: "/images/tussenwoning.png",
   },
   {
     title: "Hoekwoning",
-    price: "€45",
+    price: "€55",
     image: "/images/hoekwoning.png",
   },
   {
     title: "Vrijstaande woning",
-    price: "€55",
+    price: "€65",
     image: "/images/vrijstaande-woning.png",
   },
 ];
