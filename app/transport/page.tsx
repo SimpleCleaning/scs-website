@@ -123,6 +123,21 @@ export default function TransportPage() {
           </div>
         </section>
 
+        {/* BAKWAGEN FOTO */}
+        <section className="mx-auto max-w-6xl px-6 pb-16 sm:pb-20">
+          <div className="overflow-hidden rounded-3xl bg-slate-100 shadow-sm">
+            <img
+              src="/images/foto-bakwagen.png"
+              alt="Bakwagen van Simple Transport Service"
+              className="h-auto w-full object-cover"
+            />
+          </div>
+
+          <p className="mt-3 text-center text-sm text-slate-500">
+            Simple Transport Service · Borne
+          </p>
+        </section>
+
         {/* DIENSTEN */}
         <section className="bg-slate-50">
           <div className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
@@ -208,6 +223,7 @@ export default function TransportPage() {
                 <h3 className="font-bold">
                   Persoonlijk contact
                 </h3>
+
                 <p className="mt-2 text-slate-600">
                   Korte lijnen en duidelijke communicatie over de opdracht.
                 </p>
@@ -217,6 +233,7 @@ export default function TransportPage() {
                 <h3 className="font-bold">
                   Flexibele uitvoering
                 </h3>
+
                 <p className="mt-2 text-slate-600">
                   Transport afgestemd op de gemaakte afspraken en planning.
                 </p>
@@ -226,6 +243,7 @@ export default function TransportPage() {
                 <h3 className="font-bold">
                   Zorgvuldig transport
                 </h3>
+
                 <p className="mt-2 text-slate-600">
                   Aandacht voor goederen, materiaal en een nette aflevering.
                 </p>
