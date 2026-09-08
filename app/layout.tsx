@@ -3,8 +3,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-import Header from "../components/layout/Header";
-import Footer from "../components/layout/Footer";
+import SiteChrome from "../components/layout/SiteChrome";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -143,11 +142,10 @@ export default function RootLayout({
           }}
         />
 
-        <Header />
+        <SiteChrome>
+          {children}
+        </SiteChrome>
 
-        <main className="flex-1">{children}</main>
-
-        <Footer />
         <CookieBanner />
       </body>
     </html>
