@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Glazenwasser Borne & buitenreiniging",
@@ -27,10 +28,11 @@ const services: Service[] = [
     description:
       "Schone ramen zorgen voor meer licht en een verzorgde uitstraling. Simple Cleaning Service verzorgt glasbewassing in Borne en omgeving voor woningen en kleinere bedrijfspanden, eenmalig of periodiek.",
     benefits: [
-      "Streeploos en professioneel resultaat",
-      "Geschikt voor woningen en bedrijfspanden",
-      "Eenmalig of periodiek mogelijk",
-    ],
+  "Streeploos en professioneel resultaat",
+  "Geschikt voor woningen en bedrijfspanden",
+  "Binnen- en buitenzijde mogelijk",
+  "Eenmalig of periodiek mogelijk",
+],
     icon: "window",
   },
   {
@@ -93,7 +95,6 @@ const advantages = [
       "Simple Cleaning Service is gevestigd in Borne en werkt onder andere in Borne, Hengelo, Almelo, Enschede, Delden, Goor en Tubbergen.",
   },
 ];
-
 const faqs = [
   {
     question: "Werken jullie alleen voor particulieren?",
@@ -105,6 +106,11 @@ const faqs = [
     answer:
       "Ja. Je kunt bijvoorbeeld glasbewassing combineren met het reinigen van zonnepanelen, dakgoten of boeidelen.",
   },
+  {
+  question: "Wassen jullie de ramen ook aan de binnenkant?",
+  answer:
+    "Ja. Naast de buitenzijde kunnen we op verzoek ook de binnenkant van de ramen wassen. Geef dit aan bij je offerteaanvraag, dan nemen we dit mee in de prijsopgave.",
+},
   {
     question: "Kan ik ook een periodieke afspraak maken?",
     answer:
@@ -496,6 +502,53 @@ export default function DienstenPage() {
                 </p>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Glasbewassing werkwijze */}
+      <section className="bg-slate-50 py-20 sm:py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+            <div className="relative overflow-hidden rounded-[2.5rem] shadow-xl">
+              <Image
+                src="/images/osmose-systeem-glasbewassing.jpeg"
+                alt="Osmosewatersysteem van Simple Cleaning Service voor professionele glasbewassing"
+                width={1200}
+                height={1600}
+                className="h-auto w-full object-cover"
+              />
+            </div>
+
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-sky-600">
+                Onze werkwijze
+              </p>
+              <h2 className="mt-4 text-3xl font-black tracking-tight text-slate-950 sm:text-5xl">
+                Traditioneel én met osmosewater
+              </h2>
+              <p className="mt-6 text-lg leading-8 text-slate-600">
+                Afhankelijk van de situatie wassen we ramen traditioneel of met een
+                telescoopsteel en osmosewater. Met ons professionele osmosewatersysteem
+                kunnen we ook hoger gelegen en moeilijk bereikbare ramen veilig vanaf
+                de grond reinigen.
+              </p>
+              <div className="mt-8 space-y-4">
+                {[
+                  "Traditionele glasbewassing",
+                  "Telescoopbewassing met osmosewater",
+                  "Geschikt voor hoger gelegen en moeilijk bereikbare ramen",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-sky-100 text-sm font-black text-sky-700">✓</span>
+                    <span className="font-bold text-slate-800">{item}</span>
+                  </div>
+                ))}
+              </div>
+              <Link href="/offerte" className="mt-9 inline-flex items-center justify-center rounded-full bg-sky-600 px-7 py-4 font-black text-white shadow-lg shadow-sky-600/20 transition hover:-translate-y-0.5 hover:bg-sky-700">
+                Offerte aanvragen
+              </Link>
+            </div>
           </div>
         </div>
       </section>
