@@ -270,41 +270,25 @@ export default function HomePage() {
       {/* Verhaal */}
       <section className="bg-slate-50 py-20 sm:py-24">
         <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-2 lg:items-center lg:px-8">
-          <div className="relative min-h-[430px] overflow-hidden rounded-[2.5rem] bg-sky-950 p-8 text-white shadow-xl sm:p-10">
-            <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full border-[35px] border-white/10" />
-            <div className="absolute -bottom-24 -left-20 h-72 w-72 rounded-full border-[40px] border-sky-400/20" />
+          <div className="relative min-h-[430px] overflow-hidden rounded-[2.5rem] shadow-xl">
+  <Image
+    src="/images/scs-servicebus-borne.jpg"
+    alt="Servicebus van Simple Cleaning Service in Borne"
+    fill
+    sizes="(max-width: 1024px) 100vw, 50vw"
+    className="object-cover"
+  />
 
-            <div className="relative flex h-full min-h-[350px] flex-col justify-between">
-              <div>
-                <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white p-1 shadow-md">
-                  <Image
-                    src="/logo.png"
-                    alt="Logo van Simple Cleaning Service"
-                    width={80}
-                    height={80}
-                    className="h-full w-full object-contain"
-                  />
-                </div>
+  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/90 via-slate-950/60 to-transparent px-7 pb-7 pt-24 sm:px-9 sm:pb-9">
+    <p className="text-sm font-black uppercase tracking-[0.22em] text-sky-300">
+      Gevestigd in Borne
+    </p>
 
-                <p className="mt-8 text-sm font-black uppercase tracking-[0.22em] text-sky-300">
-                  Gevestigd in Borne
-                </p>
-
-                <h3 className="mt-4 max-w-md text-3xl font-black leading-tight">
-                  Een nette uitstraling begint bij goed onderhoud
-                </h3>
-              </div>
-
-              <div className="mt-12 rounded-3xl border border-white/10 bg-white/10 p-6 backdrop-blur-sm">
-                <p className="leading-7 text-slate-200">
-                  Regen, stof, groene aanslag en bladeren kunnen zich snel
-                  ophopen. Met regelmatig onderhoud blijft jouw woning of pand
-                  verzorgd en voorkom je onnodige vervuiling.
-                </p>
-              </div>
-            </div>
-          </div>
-
+    <h3 className="mt-3 text-2xl font-black text-white sm:text-3xl">
+      Lokaal en herkenbaar onderweg
+    </h3>
+  </div>
+</div>
           <div>
             <p className="text-sm font-black uppercase tracking-[0.22em] text-sky-600">
               Onze aanpak
