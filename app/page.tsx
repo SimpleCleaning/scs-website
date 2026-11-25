@@ -335,6 +335,47 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Zakelijke dienstverlening */}
+      <section className="bg-slate-950 py-16 text-white sm:py-20">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="max-w-4xl">
+            <p className="text-sm font-black uppercase tracking-[0.22em] text-sky-400">
+              Speciaal voor bedrijven
+            </p>
+            <h2 className="mt-4 text-3xl font-black tracking-tight sm:text-4xl lg:text-5xl">
+              Uw bedrijf verdient een representatieve uitstraling.
+            </h2>
+            <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+              Van kantoorpand tot showroom en van winkel tot restaurant.
+              Simple Cleaning Service zorgt voor schone ramen, verzorgde
+              gevelreclame en een professionele uitstraling van uw bedrijf.
+            </p>
+            <ul className="mt-8 space-y-4">
+              {[
+                "Eenmalige of periodieke reiniging",
+                "Flexibele planning in overleg",
+                "Persoonlijk contact en duidelijke afspraken",
+                "Zakelijke offertes op maat",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-3 font-semibold text-white">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sky-100">
+                    <CheckIcon />
+                  </span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <Link
+              href="/zakelijk"
+              className="mt-9 inline-flex items-center justify-center gap-3 rounded-full bg-sky-600 px-7 py-4 font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-sky-500"
+            >
+              Ontdek onze zakelijke dienstverlening
+              <span className="shrink-0"><ArrowIcon /></span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Tarieven */}
       <Pricing />
 

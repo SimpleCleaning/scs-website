@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 const menuItems = [
   { label: "Home", href: "/" },
   { label: "Diensten", href: "/diensten" },
+  { label: "Zakelijk", href: "/zakelijk" },
   { label: "Tarieven", href: "/#tarieven" },
   { label: "Contact", href: "/contact" },
 ];
