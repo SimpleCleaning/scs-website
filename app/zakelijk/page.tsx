@@ -31,7 +31,7 @@ export default function ZakelijkPage() {
           <p className="mb-5 text-sm font-bold uppercase tracking-widest text-sky-400">Zakelijke dienstverlening</p>
           <h1 className="max-w-4xl text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">Een representatief bedrijf begint met een schone uitstraling.</h1>
           <p className="mt-6 max-w-3xl text-lg leading-relaxed text-slate-300">Professionele glasbewassing en buitenreiniging voor bedrijven in Borne en omgeving. Van een streeploze showroom tot verzorgde gevelreclame: Simple Cleaning Service helpt jouw bedrijf goed voor de dag te komen.</p>
-          <div className="relative mt-10 aspect-[16/7] min-h-[220px] overflow-hidden rounded-[2rem] bg-slate-800">
+          <div className="relative mt-10 h-[220px] w-full min-w-0 max-w-full overflow-hidden rounded-[2rem] bg-slate-800 sm:h-auto sm:aspect-[16/7]">
             <Image src="/images/zakelijk-bedrijfspand.jpg" alt="Sfeerbeeld van een modern bedrijfspand met een glazen gevel" fill priority sizes="(max-width: 1280px) 100vw, 1200px" className="object-cover" />
           </div>
           <p className="mt-2 text-xs text-slate-400">Sfeerbeeld ter illustratie.</p>
