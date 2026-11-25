@@ -5,13 +5,13 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "Glazenwasser Borne & buitenreiniging",
   description:
-    "Professionele glasbewassing en buitenreiniging in Borne en Twente. Voor ramen, zonnepanelen, dakgoten en boeidelen bij woningen en bedrijfspanden.",
+    "Professionele glasbewassing en buitenreiniging in Borne en Twente. Voor ramen, zonnepanelen, dakgoten, boeidelen en reclameborden bij woningen en bedrijven.",
   alternates: {
     canonical: "/diensten",
   },
 };
 
-type IconName = "window" | "solar" | "gutter" | "fascia";
+type IconName = "window" | "solar" | "gutter" | "fascia" | "sign";
 
 type Service = {
   title: string;
@@ -71,6 +71,21 @@ const services: Service[] = [
     ],
     icon: "fascia",
   },
+  {
+    number: "05",
+    title: "Reclameborden en gevelreclame reinigen",
+    description:
+      "Reclameborden zijn het visitekaartje van jouw bedrijf. Door weersinvloeden, verkeersvuil, vogelpoep en groene aanslag kunnen ze hun verzorgde uitstraling verliezen. Simple Cleaning Service reinigt reclameborden en gevelreclame voor bedrijven in Borne en omgeving, met aandacht voor het materiaal en de bedrukking.",
+    benefits: [
+      "Reclameborden langs de weg",
+      "Gevelreclame, gevelletters en bedrijfslogo's",
+      "Reclamezuilen en buitenzijde van lichtbakken",
+      "Verwijdering van verkeersvuil en groene aanslag",
+      "Eenmalige of periodieke reiniging",
+      "Te combineren met zakelijke glasbewassing",
+    ],
+    icon: "sign",
+  },
 ];
 
 const advantages = [
@@ -104,7 +119,7 @@ const faqs = [
   {
     question: "Kan ik meerdere diensten combineren?",
     answer:
-      "Ja. Je kunt bijvoorbeeld glasbewassing combineren met het reinigen van zonnepanelen, dakgoten of boeidelen.",
+      "Ja. Je kunt bijvoorbeeld glasbewassing combineren met het reinigen van zonnepanelen, dakgoten, boeidelen of reclameborden.",
   },
   {
   question: "Wassen jullie de ramen ook aan de binnenkant?",
@@ -115,6 +130,11 @@ const faqs = [
     question: "Kan ik ook een periodieke afspraak maken?",
     answer:
       "Voor glasbewassing is een periodieke afspraak mogelijk. We bespreken samen welke frequentie het beste bij jouw situatie past.",
+  },
+  {
+    question: "Welke soorten reclameborden reinigen jullie?",
+    answer:
+      "We reinigen onder andere reclameborden langs de weg, gevelreclame, reclamezuilen en de buitenzijde van lichtbakken. Vooraf beoordelen we het materiaal, de bedrukking, eventuele elektrische onderdelen en de veilige bereikbaarheid. We stemmen de reinigingsmethode daarop af.",
   },
   {
     question: "In welke plaatsen zijn jullie actief?",
@@ -156,6 +176,22 @@ function ServiceIcon({ name }: { name: IconName }) {
         <path d="M5 10h14l2 9H3l2-9Z" />
         <path d="M8 10 7 19M12 10v9M16 10l1 9M4 15h16" />
         <path d="M12 2v3M4.9 4.9 7 7M19.1 4.9 17 7M21 12h-2M5 12H3" />
+      </svg>
+    );
+  }
+
+  if (name === "sign") {
+    return (
+      <svg
+        className={iconClass}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        aria-hidden="true"
+      >
+        <rect x="3" y="3" width="18" height="12" rx="2" />
+        <path d="M7 15v6M17 15v6M6 7h12M6 11h8" />
       </svg>
     );
   }
@@ -251,7 +287,7 @@ export default function DienstenPage() {
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
               Simple Cleaning Service helpt particulieren en bedrijven in Borne
               en Twente met professionele glasbewassing en het reinigen van
-              zonnepanelen, dakgoten en boeidelen.
+              zonnepanelen, dakgoten, boeidelen en reclameborden.
             </p>
 
             <div className="mt-9 flex flex-col gap-4 sm:flex-row">
@@ -294,7 +330,9 @@ export default function DienstenPage() {
                           {service.title}
                         </p>
                         <p className="text-sm text-slate-500">
-                          Voor woningen en bedrijfspanden
+                          {service.icon === "sign"
+                            ? "Speciaal voor bedrijven"
+                            : "Voor woningen en bedrijfspanden"}
                         </p>
                       </div>
                     </div>
@@ -345,7 +383,7 @@ export default function DienstenPage() {
 
             <p className="mt-5 text-lg leading-8 text-slate-600">
               Kies voor glasbewassing, zonnepanelen reinigen, dakgoten
-              schoonmaken of boeidelen reinigen. Meerdere werkzaamheden zijn
+              schoonmaken, boeidelen of reclameborden reinigen. Meerdere werkzaamheden zijn
               eenvoudig te combineren in één afspraak.
             </p>
           </div>
@@ -354,7 +392,7 @@ export default function DienstenPage() {
             {services.map((service) => (
               <article
                 key={service.title}
-                className="group relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-9"
+                className={`group relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-9 ${service.icon === "sign" ? "lg:col-span-2" : ""}`}
               >
                 <div className="absolute right-6 top-5 text-6xl font-black text-slate-100">
                   {service.number}

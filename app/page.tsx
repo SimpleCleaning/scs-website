@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,7 +7,7 @@ import Pricing from "../components/home/Pricing";
 export const metadata: Metadata = {
   title: "Glazenwasser Borne | Simple Cleaning Service",
   description:
-    "Glazenwasser in Borne nodig? Simple Cleaning Service verzorgt professionele glasbewassing en reiniging van zonnepanelen, dakgoten en boeidelen in Borne en omgeving.",
+    "Glazenwasser in Borne nodig? Simple Cleaning Service verzorgt glasbewassing en reiniging van zonnepanelen, dakgoten, boeidelen en reclameborden in Borne en omgeving.",
   alternates: {
     canonical: "/",
   },
@@ -44,6 +45,7 @@ const services = [
   "Zonnepanelen reinigen",
   "Dakgoten schoonmaken",
   "Boeidelen reinigen",
+  "Reclameborden en gevelreclame reinigen",
 ];
 
 const workSteps = [
@@ -109,7 +111,7 @@ function CheckIcon() {
     >
       <path
         fillRule="evenodd"
-        d="M16.704 5.292a1 1 0 0 1 .004 1.414l-7.25 7.292a1 1 0 0 1-1.42.004l-3.75-3.75a1 1 0 1 1 1.414-1.414l3.04 3.04 6.544-6.582a1 1 0 0 1 1.418-.004Z"
+        d="M16.704 5.292a1 1 0 0 1 .004 1.414l-7.25 7.25a1 1 0 0 1-1.42.004l-3.75-3.75a1 1 0 1 1 1.418-1.41l3.04 3.04 6.544-6.582a1 1 0 0 1 1.418-.004Z"
         clipRule="evenodd"
       />
     </svg>
@@ -165,16 +167,17 @@ export default function HomePage() {
               Persoonlijk en professioneel
             </div>
 
-         <h1 className="max-w-3xl break-words text-3xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-  Glazenwasser in Borne voor een{" "}
-  <span className="text-sky-400">helder resultaat</span>
-</h1>
+            <h1 className="max-w-3xl break-words text-3xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+              Glazenwasser in Borne voor een{" "}
+              <span className="text-sky-400">helder resultaat</span>
+            </h1>
 
-<p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-  Professionele glasbewassing en buitenreiniging in Borne en omgeving.
-  Voor schone ramen, zonnepanelen, dakgoten en boeidelen, met duidelijke
-  afspraken en persoonlijke service.
-</p>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
+              Professionele glasbewassing en buitenreiniging in Borne en
+              omgeving. Voor schone ramen, zonnepanelen, dakgoten, boeidelen
+              en reclameborden. Met duidelijke afspraken en persoonlijke
+              service voor particulieren en bedrijven.
+            </p>
 
             <div className="mt-9 flex flex-col gap-4 sm:flex-row">
               <Link
@@ -271,24 +274,25 @@ export default function HomePage() {
       <section className="bg-slate-50 py-20 sm:py-24">
         <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-2 lg:items-center lg:px-8">
           <div className="relative min-h-[430px] overflow-hidden rounded-[2.5rem] shadow-xl">
-  <Image
-    src="/images/scs-servicebus-borne.jpg"
-    alt="Servicebus van Simple Cleaning Service in Borne"
-    fill
-    sizes="(max-width: 1024px) 100vw, 50vw"
-    className="object-cover"
-  />
+            <Image
+              src="/images/scs-servicebus-borne.jpg"
+              alt="Servicebus van Simple Cleaning Service in Borne"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
 
-  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/90 via-slate-950/60 to-transparent px-7 pb-7 pt-24 sm:px-9 sm:pb-9">
-    <p className="text-sm font-black uppercase tracking-[0.22em] text-sky-300">
-      Gevestigd in Borne
-    </p>
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/90 via-slate-950/60 to-transparent px-7 pb-7 pt-24 sm:px-9 sm:pb-9">
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-sky-300">
+                Gevestigd in Borne
+              </p>
 
-    <h3 className="mt-3 text-2xl font-black text-white sm:text-3xl">
-      Lokaal en herkenbaar onderweg
-    </h3>
-  </div>
-</div>
+              <h3 className="mt-3 text-2xl font-black text-white sm:text-3xl">
+                Lokaal en herkenbaar onderweg
+              </h3>
+            </div>
+          </div>
+
           <div>
             <p className="text-sm font-black uppercase tracking-[0.22em] text-sky-600">
               Onze aanpak
@@ -305,10 +309,12 @@ export default function HomePage() {
             </p>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {services.map((service) => (
+              {services.map((service, index) => (
                 <div
                   key={service}
-                  className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4 font-bold text-slate-800 shadow-sm"
+                  className={`flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4 font-bold text-slate-800 shadow-sm ${
+                    index === services.length - 1 ? "sm:col-span-2" : ""
+                  }`}
                 >
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-sky-100">
                     <CheckIcon />
@@ -440,12 +446,12 @@ export default function HomePage() {
               Actief in Borne en omgeving
             </h2>
 
-          <p className="mt-5 max-w-xl leading-8 text-slate-600">
-  Simple Cleaning Service is gevestigd in Borne en is actief in Borne,
-  Hengelo, Almelo, Enschede, Delden, Goor, Tubbergen en omliggende
-  plaatsen in Twente. Staat jouw woonplaats er niet tussen? Neem dan
-  gerust contact op om de mogelijkheden te bespreken.
-</p>
+            <p className="mt-5 max-w-xl leading-8 text-slate-600">
+              Simple Cleaning Service is gevestigd in Borne en is actief in Borne,
+              Hengelo, Almelo, Enschede, Delden, Goor, Tubbergen en omliggende
+              plaatsen in Twente. Staat jouw woonplaats er niet tussen? Neem dan
+              gerust contact op om de mogelijkheden te bespreken.
+            </p>
 
             <a
               href="tel:+31619909034"
@@ -510,7 +516,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
     </main>
   );
 }

@@ -36,6 +36,11 @@ const services = [
     title: "Boeidelen reinigen",
     description: "Voor een verzorgde uitstraling van het pand.",
   },
+  {
+    value: "Reclameborden en gevelreclame reinigen",
+    title: "Reclameborden en gevelreclame reinigen",
+    description: "Voor reclameborden, gevelletters, reclamezuilen en lichtbakken bij bedrijven.",
+  },
 ];
 
 type ApiResponse = {
@@ -522,6 +527,8 @@ export default function QuoteForm() {
                     <label
                       key={service.value}
                       className={`cursor-pointer rounded-2xl border p-5 transition ${
+                        service.value === "Reclameborden en gevelreclame reinigen" ? "sm:col-span-2" : ""
+                      } ${
                         isSelected
                           ? "border-sky-500 bg-sky-50 ring-2 ring-sky-100"
                           : "border-slate-300 bg-white hover:border-sky-300"
